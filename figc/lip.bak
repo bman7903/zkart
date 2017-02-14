@@ -1,0 +1,26 @@
+
+#!/usr/bin/python
+
+import pyelliptic
+from base64 import b64encode
+
+# Symmetric encryption
+iv = pyelliptic.cipher.gen_IV('aes-256-cfb')
+ctx = pyelliptic.cipher("secretkey", iv, 1, ciphername='aes-256-cfb')
+
+ctx.update('test1')
+ctx.update('test2')
+ciphertext = ctx.final()
+
+ctx2 = pyelliptic.cipher("secretkey", iv, 0, ciphername='aes-256-cfb')
+
+alice = pyelliptic.ecc()
+bob = pyelliptic.ecc(curve='sect571r1')
+ciphertext = alice.encrypt("Hello Bob", bob.get_pubkey())
+signature = bob.sign("Hello Alice")
+
+alice = pyelliptic.ecc(curve='sect571r1')
+z = alice.get_ecdh_key(bob.get_pubkey())
+z = b64encode( z )
+print(z)
+

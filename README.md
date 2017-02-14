@@ -1,0 +1,1 @@
+This is my intro to SVGs.  Template based CGI configuration.  Reads through SVG files to dynamically change at the moment color, but size is the easy next step.  I also wrote a color wheel for this which I am quite proud of. CSS HTML, JS, and CGI based logic.

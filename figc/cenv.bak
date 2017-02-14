@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+
+#TODO:  OS-SPECIFIC < AGNOSTIC
+#TODO:  TMP/static conf file? tmpfs/ram
+#TODO:  Remote Backup/Restore cf.db
+#TODO:  Windows compatable paths
+
+from os import environ, path, listdir, mkdir
+
+exist = path.exists
+join  = path.join
+sep   = path.sep
+
+hdir  = environ['HOME']
+
+
+def dcf():
+  ### default config
+  ### TODO: list parsable uri's as resource
+
+  ret = ''' \
+### COLOR START
+
+  icon-color:      #69b543
+  primary-color:   #664b4b
+  accent-color:    #7d8182
+  highlight-color: #272c2e
+  link-color:      yellow
+  text-color:      purple
+  title-color:     red
+
+### COLOR END
+
+
+### RES SMALL START
+
+  width:           640
+  height:          580
+  icon-size:       32
+
+### RES SMALL END
+
+
+### RESOURCE START
+
+  sidebar-icons:bins/icn/sidebar
+  sync:local
+  #sync:imgur
+
+
+### RESOURCE END
+'''
+  return ret
+
+
+def cdir():
+  ### locate-create-return work dir
+
+  if exist( hdir ):
+     ret = str( join( sep, hdir, '.zkart' ) )
+     if exist( ret ):
+        return ret
+
+     else:
+         try:
+           mkdir( ret )
+           return ret
+
+         except:
+           return
+
+     return
+
+
+def cfp():
+  ### locate-create-return conf file
+
+  if cdir():
+     dp  = str( cdir() )
+     ret = str( join( sep, dp, 'zkart.cfg' ) )
+     if exist( ret ):
+       return ret
+
+     else:
+       try:
+          cfg = str( dcf() )
+          fd = open( ret, 'w' )
+          fd.write( cfg )
+          fd.close()
+          return ret
+
+       except:
+          return
+  return

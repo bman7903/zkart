@@ -1,0 +1,28 @@
+<html>
+<head>
+   <link rel="stylesheet" type="text/css" href="main.css" />
+   <link rel="stylesheet" type="text/css" href="snd.css" />
+
+   <style>.standard_label_style { color: yellow; }</style>
+</style>
+<head>
+<body>
+
+
+<div id="header-wrapper"><div id="header">
+  <center>Some Head</center>
+</div></div>
+
+<div id="content-wrapper" > <br><br>
+     <br><br><label><b>Stuff n Stuff
+</div>
+
+<div id="wrap">
+  <div class="bi"></div>
+  <div id="footerwrap"><div id="footer">
+   <br><label>Some Tail</div>
+</div></div>
+
+
+</body>
+</html>
